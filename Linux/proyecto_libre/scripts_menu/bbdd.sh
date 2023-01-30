@@ -34,14 +34,3 @@ while true;do
 		*)echo "No existe ese numero en el menu";break;;
 	esac
 done
-
-while true;do
-	menu
-	read -p "Selecciona una opcion del menu: " n
-	case $n in
-        1)instalar;;
-		2)entrar;;
-		3)exit;;
-		*)echo "No existe ese numero en el menu";break;;
-	esac
-done

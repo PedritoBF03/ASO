@@ -24,7 +24,7 @@ menu
 function info_escritorio {
     Write-Host ""
 
-    Get-CimInstance -ClassName Win32_Desktop
+    Get-CimInstance -ClassName Win32_Desktop | ft
     
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"
@@ -33,7 +33,7 @@ function info_escritorio {
 function bios {
     Write-Host ""
 
-    Get-CimInstance -ClassName Win32_BIOS
+    Get-CimInstance -ClassName Win32_BIOS  | ft
         
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"
@@ -42,7 +42,7 @@ function bios {
 function cpu {
     Write-Host ""
 
-    Get-CimInstance -ClassName Win32_Processor | Select-Object -ExcludeProperty "CIM*"
+    Get-CimInstance -ClassName Win32_Processor | Select-Object -ExcludeProperty "CIM*" | ft
             
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"
@@ -51,7 +51,7 @@ function cpu {
 function fabricante {
     Write-Host ""
 
-    Get-CimInstance -ClassName Win32_ComputerSystem
+    Get-CimInstance -ClassName Win32_ComputerSystem | ft
             
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"
@@ -60,7 +60,7 @@ function fabricante {
 function revisiones {
     Write-Host ""
 
-    Get-CimInstance -ClassName Win32_QuickFixEngineering
+    Get-CimInstance -ClassName Win32_QuickFixEngineering | ft
             
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"
@@ -89,7 +89,7 @@ function propietarios_usuarios {
 function disco {
     Write-Host ""
 
-    Get-CimInstance -ClassName Win32_LogicalDisk -Filter "DriveType=3"
+    Get-CimInstance -ClassName Win32_LogicalDisk -Filter "DriveType=3" | ft
             
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"

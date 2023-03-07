@@ -20,7 +20,7 @@ menu
 
 function ver {
     	Write-Host ""
-    	Get-LocalGroup
+    	Get-LocalGroup | ft
     	Write-Host ""
 	Read-Host -prompt "Pulsa cualquier tecla para continuar"
 }

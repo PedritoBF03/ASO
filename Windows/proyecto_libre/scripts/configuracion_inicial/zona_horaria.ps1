@@ -17,7 +17,7 @@ menu
 
 function ver_actual {
     Write-Host ""
-    Get-TimeZone
+    Get-TimeZone |ft
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"
 }

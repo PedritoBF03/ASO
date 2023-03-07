@@ -22,14 +22,14 @@ function menu {
 menu
 
 function obtener_adaptadores{
-	get-netadapter
+	get-netadapter | ft
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"
 }
 
 function obtener_info_adaptador{
     Write-Host ""
-    get-netadapter
+    get-netadapter | ft
     Write-Host ""
 
     $nombre_adaptador = Read-Host -prompt "Di el nombre del adaptador a ver su informacion"
@@ -45,7 +45,7 @@ function obtener_info_adaptador{
 }
 
 function renombrar_adaptador{
-    get-netadapter
+    get-netadapter | ft
 	$nombre_adaptador = Read-Host -prompt "Di el nombre del adaptador a cambiar"
     if ($nombre_adaptador) {
 		$nuevo_nombre = Read-Host -prompt "Di el nuevo nombre para asignar al adaptador"
@@ -65,7 +65,7 @@ function renombrar_adaptador{
 }
 
 function ip_estatica{
-    get-netadapter
+    get-netadapter | ft
     Write-Host ""
     $nombre_adaptador = Read-Host -prompt "Di el nombre del adaptador a cambiar"
 
@@ -95,7 +95,7 @@ function ip_estatica{
 }
 
 function obtener_un_adaptador {
-    get-netadapter
+    get-netadapter | ft
     Write-Host ""
     $nombre_adaptador = Read-Host -prompt "Di el nombre del adaptador que quieres obtener informacion"
     if ($nombre_adaptador) {
@@ -110,15 +110,15 @@ function obtener_un_adaptador {
 }
 
 function establecer_ip_y_dns {
-    get-netadapter
+    get-netadapter | ft
     Write-Host ""
-    $interface_index = Read-Host -prompt "Di el index del adaptador a cambiar"
+    $interface_index = Read-Host -prompt "Di el nombre del adaptador a cambiar"
     if ($interface_index) {
 
         $ip_asignar = Read-Host -prompt "Di la nueva direccion ip a asignar"
         if ($ip_asignar) {
 
-            $mascara = Read-Host -prompt "Di la nueva mascara a asignar a la ip"
+            $mascara = Read-Host -prompt "Di la nueva mascara a asignar a la ip (24)"
             if ($mascara) {
                 
                 $gateway = Read-Host -prompt "Di la ip de la puerta de enlace de tu red"
@@ -127,8 +127,8 @@ function establecer_ip_y_dns {
                     $dns = Read-Host -prompt "Di la ip del servidor dns a asignar"
                     if ($dns) {
                 
-                        New-NetIPAddress -InterfaceIndex $interface_index -IPAddress $ip_asignar -PrefixLength $mascara -DefaultGateway $gateway
-                        Set-DNSClientServerAddress -InterfaceIndex $interface_index -ServerAddresses $dns
+                        New-NetIPAddress -interfacealias   $interface_index -IPAddress $ip_asignar -PrefixLength $mascara -DefaultGateway $gateway
+                        Set-DNSClientServerAddress -interfacealias $interface_index -ServerAddresses $dns
 
                     }
                     else {
@@ -160,15 +160,15 @@ function establecer_ip_y_dns {
 }
 
 function asignar_dns {
-    get-netadapter
+    get-netadapter | ft
     Write-Host ""
 
-    $interface_index = Read-Host -prompt "Di el index del adaptador a cambiar el dns"
+    $interface_index = Read-Host -prompt "Di el nombre del adaptador a cambiar el dns"
     if ($interface_index) {
                 
         $dns = Read-Host -prompt "Di la ip del servidor dns a asignar"
         if ($dns) {
-            Set-DNSClientServerAddress -InterfaceIndex $interface_index -ServerAddresses $dns
+            Set-DNSClientServerAddress -interfacealias $interface_index -ServerAddresses $dns
         }
         else {
             'No puedes dejar la ip del dns a asignar en blanco'
@@ -184,15 +184,15 @@ function asignar_dns {
 }
 
 function eliminar_configuracion {
-    get-netadapter
+    get-netadapter | ft
     Write-Host ""
 
-    $ipa = Read-Host -prompt "Di la ip para borrar"
+    $ipa = Read-Host -prompt "Di el nombre del adaptador para borrar la ip"
     if ($ipa) {
        
-        $gateway = Read-Host -prompt "Di la ip de la puerta de enlace a borrar"
+        $gateway = Read-Host -prompt "Di el nombre de la puerta de enlace a borrar"
         if ($gateway) {
-            Remove-NetIPAddress -IPAddress $ipa -DefaultGateway $gateway
+            Remove-NetIPAddress -interfacealias $ipa -DefaultGateway $gateway
         }
         else {
             'No puedes dejar la puerta de enlace en blanco'
@@ -200,7 +200,7 @@ function eliminar_configuracion {
 
     }
     else {
-        'No puedes dejar la ip en blanco'
+        'No puedes dejar el nombre del adaptador en blanco'
     }
 
     Write-Host ""
@@ -208,12 +208,12 @@ function eliminar_configuracion {
 }
 
 function resetear_configuracion {
-    get-netadapter
+    get-netadapter | ft
     Write-Host ""
 
-    $interface_index = Read-Host -prompt "Di la index del interfaz para resetear"
+    $interface_index = Read-Host -prompt "Di la nombre del interfaz para resetear"
     if ($interface_index) {
-       Set-DnsClientServerAddress -InterfaceIndex $interface_index -ResetServerAddresses
+       Set-DnsClientServerAddress -interfacealias $interface_index -ResetServerAddresses
     }
     else {
         'No puedes dejar el index en blanco'

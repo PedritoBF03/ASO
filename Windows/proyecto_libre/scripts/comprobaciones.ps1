@@ -3,7 +3,7 @@ function menu {
 	Write-Host ""
 	Write-Host "-----------------------------------"
 	Write-Host ""
-	Write-Host "           MENU PRINCIPAL"
+	Write-Host "           Comprobaciones"
 	Write-Host ""
 	Write-Host "-----------------------------------"
 	Write-Host ""
@@ -21,49 +21,49 @@ function menu {
 menu
 
 function obtener_adaptadores{
-	get-netadapter
+	get-netadapter | ft
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"
 }
 
 function zona_horaria{
-	Get-Timezone
+	Get-Timezone | ft
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"
 }
 
 function actualizaciones_insta{
-	Get-HotFix
+	Get-HotFix | ft
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"
 }
 
 function ver_usuarios{
-	Get-LocalUser
+	Get-LocalUser | ft
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"
 }
 
 function ver_grupos{
-	Get-LocalGroup
+	Get-LocalGroup | ft
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"
 }
 
 function alias{
-	Get-Alias
+	Get-Alias | ft
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"
 }
 
 function ver_modulos{
-	Get-Module
+	Get-Module | ft
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"
 }
 
 function h_cmdlet{
-	Get-History
+	Get-History | ft
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"
 }

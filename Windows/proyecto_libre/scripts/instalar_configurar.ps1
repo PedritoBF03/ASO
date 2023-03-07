@@ -1,9 +1,9 @@
 function menu {
-	# Clear-Host
+	Clear-Host
 	Write-Host ""
 	Write-Host "-----------------------------------"
 	Write-Host ""
-	Write-Host "         INSTALAR CONFIGURAR"
+	Write-Host "         INSTALAR Y CONFIGURAR"
 	Write-Host ""
 	Write-Host "-----------------------------------"
 	Write-Host ""

@@ -18,7 +18,7 @@ menu
 function listar {
     Write-Host ""
     
-    get-eventlog -list
+    get-eventlog -list | ft
 
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"

@@ -20,13 +20,13 @@ function automaticas{
 }
 
 function instaladas{
-    Get-HotFix
+    Get-HotFix | ft
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"
 }
 
 function seguridad_instaladas{
-    Get-HotFix -description "Security Update"
+    Get-HotFix -description "Security Update" | ft
     Write-Host ""
     Read-Host -prompt "Pulsa cualquier tecla para continuar"
 }

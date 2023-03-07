@@ -17,7 +17,7 @@ menu
 
 function ver {
     
-    Get-LocalUser
+    Get-LocalUser | ft
     
 	Read-Host -prompt "Pulsa cualquier tecla para continuar"
 }
